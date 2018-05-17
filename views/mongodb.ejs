@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+
+<div class="container">
+    <h2>Database Results getting Routes </h2>
+    <ul>
+        <% results.forEach(function(r) { %>
+        <li>Name: <%= r.name %> - Product ID: <%= r._id %>
+            Price: <%=r.price %>
+            Quantity: <%=r.quantity %> )
+        </li>
+        <% }); %>
+    </ul>
+</div>
+</body>
+</html>
