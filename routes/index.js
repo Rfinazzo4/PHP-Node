@@ -15,7 +15,7 @@ router.get('/mongodb', function (request, response) {
 
 
         //get collection of Routes
-        var Routes = db.collection('Routes');
+        var Routes = theDatabase.collection('Routes');
         //get all Routes
         Routes.find({ }).sort({ name: 1 }).toArray(function (err, docs) {
             if(err) throw err;
