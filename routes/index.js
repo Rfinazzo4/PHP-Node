@@ -20,7 +20,7 @@ router.get('/mongodb', function (request, response) {
         Routes.find({ }).sort({ name: 1 }).toArray(function (err, docs) {
             if(err) throw err;
 
-            response.render('/mongodb', {results: docs});
+            response.render('views/mongodb', {results: docs});
 
         });
 
