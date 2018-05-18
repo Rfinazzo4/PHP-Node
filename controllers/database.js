@@ -33,7 +33,7 @@ module.exports.getAllOrders =  function (request, response) {
         });
 
         //close connection when your app is terminating.
-        theDatabase.close(function (err) {
+        db.close(function (err) {
             if(err) throw err;
         });
     });//end of connect
