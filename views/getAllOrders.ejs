@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>mLab MongoDB test</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+<div class="container">
+    <h2>Database Results getting Routes </h2>
+    <ul>
+        <% results.forEach(function(r) { %>
+        <li>Name: <%= r.name %>, Product ID: <%= r.code %></li>
+        <ul>
+            <li>Quantity: <%=r.quantity %>, Price: <%=r.price %></li>
+        </ul>
+        <br/><br/>
+        <% }); %>
+    </ul>
+</div>
+
+</body>
+</html>
+
+           
