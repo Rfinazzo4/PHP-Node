@@ -9,6 +9,10 @@ var mongoDBURI = process.env.MONGODB_URI || 'mongodb://Rfinazzo4:Rio-fizzo4@ds22
  * @param response
  *
  */
+
+module.exports.storeData =  function (request, response) {
+
+}
 module.exports.getAllOrders =  function (request, response) {
 
     mongodb.MongoClient.connect(mongoDBURI, function(err,  client) {
