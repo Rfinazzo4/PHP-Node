@@ -129,7 +129,7 @@ module.exports.storeData = function (req, res, next) {
             PRODUCT_VECTOR: product_vector,
             ORDER_TOTAL: total,
         };
-        SHIPPING.insertOne(shippingdata, function (err, result) {
+        ORDERS.insertOne(orderdata, function (err, result) {
             if (err) throw err;
         });
 
