@@ -72,8 +72,8 @@ module.exports.storeData = function (req, res, next) {
         });*/
         var customerdata = {
             _id: customerID,
-            FIRSTNAME: name1,
-            LASTNAME: 'name2',
+            FIRSTNAME: customer_info['name1'],
+            LASTNAME: customer_info['name2'],
             STREET: customer_info['add1'],
             CITY: customer_info['city'],
             STATE: customer_info['state'],
