@@ -45,7 +45,7 @@ module.exports.storeData = function (req, res, next) {
     var total = req.body.ordertotal;
 
 
-    mongodb.MongoClient.connect(mongoDBURI, function (err, db) {
+    mongodb.MongoClient.connect(mongoDBURI, function (err, client) {
         if (err) throw err;
         /**************************************************************************
          * IMPORTANT:  this is how you generate  a random number for  3IDs that
@@ -56,7 +56,7 @@ module.exports.storeData = function (req, res, next) {
          *     autogenerate it for the documents we newly insert into the CUSOTMERS, BILLING, SHIPPING
          *      for ORDERS we allow the system to autogenerate its  _id
          */
-
+        // Try MongoDB in replace of db *******
         var theDatabase = client.db('heroku_wcw1rlmf'); //set database
 
 
