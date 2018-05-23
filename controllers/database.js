@@ -59,7 +59,7 @@ module.exports.storeData = function (req, res, next) {
         var customerID = Math.floor((Math.random() * 1000000000000) + 1);
         var billingID = Math.floor((Math.random() * 1000000000000) + 1);
         var shippingID = Math.floor((Math.random() * 1000000000000) + 1);
-        var day = date.getDate();
+        var day = new Date();
 
         //customer collection operation
         var CUSTOMERS = db.collection('CUSTOMERS');
