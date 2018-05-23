@@ -170,4 +170,4 @@ module.exports.getAllOrders =  function (request, response) {
             if (err) throw err;
         });
     });//end of connect
-}
+};
