@@ -137,3 +137,33 @@ module.exports.storeData = function (req, res, next) {
     })
 
 };
+
+module.exports.getAllOrders =  function (request, response) {
+
+    mongodb.MongoClient.connect(mongoDBURI, function (err, client) {
+        if (err) throw err;
+
+
+        //get handle to the databse
+        var theDatabase = client.db('heroku_wcw1rlmf');
+
+
+        //get collection of routes
+        var Routes = theDatabase.collection('Order');
+
+
+        //SECOND -show another way to make request for ALL Routes  and simply collect the  documents as an
+        //   array called docs that you  forward to the  getAllRoutes.ejs view for use there
+        Routes.find().toArray(function (err, docs) {
+            if (err) throw err;
+
+            response.render('getAllOrders', {results: docs});
+
+        });
+
+        //close connection when your app is terminating.
+        client.close(function (err) {
+            if (err) throw err;
+        });
+    });//end of connect
+}

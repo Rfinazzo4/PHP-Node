@@ -10,10 +10,8 @@ var mongoDBURI = process.env.MONGODB_URI || 'mongodb://Rfinazzo4:Rio-fizzo4@ds22
 //**************************************************************************
 //***** mongodb get all of the Routes in Routes collection where frequence>=1
 //      and sort by the name of the route.  Render information in the views/pages/mongodb.ejs
-router.post('/storeData',controllerDatabase.storeData);
 
-
-
+router.post('/storeData', controllerDatabase.storeData);
 
 router.post('/getAllOrders', function (request, response) {
 
@@ -51,8 +49,12 @@ router.post('/getAllOrders', function (request, response) {
 //**************************************************************************
 //***** mongodb get all of the Routes in Routes collection w
 //      and Render information iwith an ejs view
-
-router.get('/storeData', controllerDatabase.storeData);
 router.get('/getAllOrders', controllerDatabase.getAllOrders);
+
+router.get('/storeData' , controllerDatabase.storeData);
+
+
+
+
 
 module.exports = router;
