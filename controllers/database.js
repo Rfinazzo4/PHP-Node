@@ -67,9 +67,9 @@ module.exports.storeData = function (req, res, next) {
 
         //customer collection operation
         var CUSTOMERS = theDatabase.collection('CUSTOMERS');
-        CUSTOMERS.deleteMany({}, function (err, result) {
+        /*CUSTOMERS.deleteMany({}, function (err, result) {
         if (err) throw err;
-        });
+        });*/
         var customerdata = {
             _id: customerID,
             FIRSTNAME: customer_info['name1'],
@@ -88,9 +88,9 @@ module.exports.storeData = function (req, res, next) {
         //Billing collection operation
 
         var BILLING = theDatabase.collection('BILLING');
-        BILLING.deleteMany({}, function (err, result) {
+        /*BILLING.deleteMany({}, function (err, result) {
         if (err) throw err;
-        });
+        });*/
         var billingdata = {
             _id: billingID,
             CUSTOMER_ID: customerID,
@@ -104,9 +104,9 @@ module.exports.storeData = function (req, res, next) {
 
         //Shipping collection operation
         var SHIPPING = theDatabase.collection('SHIPPING');
-        SHIPPING.deleteMany({}, function (err, result) {
+        /*SHIPPING.deleteMany({}, function (err, result) {
         if (err) throw err;
-        });
+        });*/
         var shippingdata = {
             _id: shippingID,
             CUSTOMER_ID: customerID,
@@ -121,9 +121,9 @@ module.exports.storeData = function (req, res, next) {
 
         //ORDERS collection operation
         var ORDERS = theDatabase.collection('ORDERS');
-        ORDERS.deleteMany({}, function (err, result) {
+        /*ORDERS.deleteMany({}, function (err, result) {
         if (err) throw err;
-        });
+        });*/
         var orderdata = {
             _id: shippingID,
             CUSTOMER_ID: customerID,
