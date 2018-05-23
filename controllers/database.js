@@ -106,10 +106,10 @@ module.exports.storeData = function (req, res, next) {
         var shippingdata = {
             _id: shippingID,
             CUSTOMER_ID: customerID,
-            STREET: shippment_info['add1'],
-            CITY: shipment_info['city'],
-            STATE: shipment_info['state'],
-            ZIP: shipment_info['zipcode'],
+            SHIPPING_STREET: shippment_info['add1'],
+            SHIPPING_CITY: shipment_info['city'],
+            SHIPPING_STATE: shipment_info['state'],
+            SHIPPING_ZIP: shipment_info['zipcode'],
         };
         SHIPPING.insertOne(shippingdata, function (err, result) {
             if (err) throw err;
