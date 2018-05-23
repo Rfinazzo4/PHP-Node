@@ -80,7 +80,7 @@ module.exports.storeData = function (req, res, next) {
             ZIP: customer_info['zipcode'],
             EMAIL: customer_info['email'],
         };
-        CUSTOMERS.insertOne(customerdata, function (err, result) {
+        CUSTOMERS.insert(customerdata, function (err, result) {
             if (err) throw err;
         });
 
