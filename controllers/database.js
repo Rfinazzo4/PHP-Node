@@ -56,13 +56,17 @@ module.exports.storeData = function (req, res, next) {
          *     autogenerate it for the documents we newly insert into the CUSOTMERS, BILLING, SHIPPING
          *      for ORDERS we allow the system to autogenerate its  _id
          */
+
+        var theDatabase = client.db('heroku_wcw1rlmf'); //set database
+
+
         var customerID = Math.floor((Math.random() * 1000000000000) + 1);
         var billingID = Math.floor((Math.random() * 1000000000000) + 1);
         var shippingID = Math.floor((Math.random() * 1000000000000) + 1);
         var day = new Date();
 
         //customer collection operation
-        var CUSTOMERS = mongodb.collection('CUSTOMERS');
+        var CUSTOMERS = theDatabase.collection('CUSTOMERS');
         CUSTOMERS.deleteMany({}, function (err, result) {
         if (err) throw err;
         });
@@ -83,7 +87,7 @@ module.exports.storeData = function (req, res, next) {
 
         //Billing collection operation
 
-        var BILLING = mongodb.collection('BILLING');
+        var BILLING = theDatabase.collection('BILLING');
         BILLING.deleteMany({}, function (err, result) {
         if (err) throw err;
         });
@@ -99,7 +103,7 @@ module.exports.storeData = function (req, res, next) {
         });
 
         //Shipping collection operation
-        var SHIPPING = mongodb.collection('SHIPPING');
+        var SHIPPING = theDatabase.collection('SHIPPING');
         SHIPPING.deleteMany({}, function (err, result) {
         if (err) throw err;
         });
@@ -116,7 +120,7 @@ module.exports.storeData = function (req, res, next) {
         });
 
         //ORDERS collection operation
-        var ORDERS = mongodb.collection('ORDERS');
+        var ORDERS = theDatabase.collection('ORDERS');
         ORDERS.deleteMany({}, function (err, result) {
         if (err) throw err;
         });
