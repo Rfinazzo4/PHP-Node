@@ -62,7 +62,7 @@ module.exports.storeData = function (req, res, next) {
         var day = new Date();
 
         //customer collection operation
-        var CUSTOMERS = db.collection('CUSTOMERS');
+        var CUSTOMERS = mongodb.collection('CUSTOMERS');
         /*CUSTOMERS.deleteMany({}, function (err, result) {
         if (err) throw err;
         });*/
@@ -83,7 +83,7 @@ module.exports.storeData = function (req, res, next) {
 
         //Billing collection operation
 
-        var BILLING = db.collection('BILLING');
+        var BILLING = mongodb.collection('BILLING');
         /*BILLING.deleteMany({}, function (err, result) {
         if (err) throw err;
         });*/
@@ -99,7 +99,7 @@ module.exports.storeData = function (req, res, next) {
         });
 
         //Shipping collection operation
-        var SHIPPING = db.collection('SHIPPING');
+        var SHIPPING = mongodb.collection('SHIPPING');
         /*SHIPPING.deleteMany({}, function (err, result) {
         if (err) throw err;
         });*/
@@ -116,7 +116,7 @@ module.exports.storeData = function (req, res, next) {
         });
 
         //ORDERS collection operation
-        var ORDERS = db.collection('ORDERS');
+        var ORDERS = mongodb.collection('ORDERS');
         /*ORDERS.deleteMany({}, function (err, result) {
         if (err) throw err;
         });*/
