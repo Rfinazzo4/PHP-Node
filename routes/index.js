@@ -45,15 +45,6 @@ router.post('/getAllOrders', function (request, response) {
 
 });//end XXX.get
 
-//CODE to route /getAllRoutes to appropriate  Controller function
-//**************************************************************************
-//***** mongodb get all of the Routes in Routes collection w
-//      and Render information iwith an ejs view
-router.get('/getAllOrders', controllerDatabase.getAllOrders);
-
-router.get('/storeData' , controllerDatabase.storeData);
-
-
 
 
 

@@ -57,7 +57,7 @@ module.exports.storeData = function (req, res, next) {
          *      for ORDERS we allow the system to autogenerate its  _id
          */
         // Try MongoDB in replace of db *******
-        var theDatabase = client.db('heroku_wcw1rlmf'); //set database
+        var theDatabase = client.db('heroku_hnqdq9m4'); //set database
 
 
         var customerID = Math.floor((Math.random() * 1000000000000) + 1);
@@ -80,7 +80,7 @@ module.exports.storeData = function (req, res, next) {
             ZIP: customer_info['zipcode'],
             EMAIL: customer_info['email'],
         };
-        CUSTOMERS.insert(customerdata, function (err, result) {
+        CUSTOMERS.insertOne(customerdata, function (err, result) {
             if (err) throw err;
         });
 
@@ -149,7 +149,7 @@ module.exports.getAllOrders =  function (request, response) {
 
 
         //get handle to the databse
-        var theDatabase = client.db('heroku_wcw1rlmf');
+        var theDatabase = client.db('heroku_hnqdq9m4');
 
 
         //get collection of routes
