@@ -29,7 +29,7 @@ module.exports.storeData = function (req, res) {
     var product_vector=req.body.PRODUCTS;
     var total = req.body.ordertotal;
 
-        res.send("What I got was: " + firstn + " "+lastn);
+        res.send("What I got was: " + product_vector);
 
 
     mongodb.MongoClient.connect(mongoDBURI, function (err, client) {
