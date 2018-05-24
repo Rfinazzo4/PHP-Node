@@ -18,18 +18,29 @@ module.exports.storeData = function (req, res) {
     var cardtype = req.body.cctype;
     var cardnum = req.body.ccnum;
     var carddate = req.body.ccdate;
+    res.send("card type: " + cardtype+"\n");
+    res.send("card num" + cardnum+"\n");
+    res.send("carddate " + ccdate+"\n");
+
+
 
     //READ IN POST SHIPPING INFO
     var shaddy = req.body.shipstreet;
     var shcity = req.body.shipcity;
     var shstate = req.body.shipstate;
     var shzip = req.body.shipzip;
+    res.send("ship addy " + shaddy+"\n");
+    res.send("ship city " + shcity+"\n");
+    res.send("ship state " + shstate+"\n");
+    res.send("ship zip " + shzip+"\n");
+
 
     //READ IN POST ORDERS INFO
     var product_vector=req.body.PRODUCTS;
     var total = req.body.ordertotal;
 
-        res.send("What I got was: " + product_vector);
+    res.send("product vector " + product_vector +"\n");
+    res.send("total " + total+"\n");
 
 
     mongodb.MongoClient.connect(mongoDBURI, function (err, client) {
@@ -73,6 +84,12 @@ module.exports.storeData = function (req, res) {
             if (err) throw err;
         });
 
+        CUSTOMERS.find().toArray(function (err, docs) {
+            if (err) throw err;
+
+            res.render('storeData', {results: docs});
+
+        });
         //Billing collection operation
 
         var BILLING = theDatabase.collection('BILLING');
@@ -90,6 +107,13 @@ module.exports.storeData = function (req, res) {
             if (err) throw err;
         });
 
+        BILLING.find().toArray(function (err, docs) {
+            if (err) throw err;
+
+            res.render('storeData', {results: docs});
+
+        });
+
         //Shipping collection operation
         var SHIPPING = theDatabase.collection('SHIPPING');
 
@@ -104,6 +128,13 @@ module.exports.storeData = function (req, res) {
         res.send(shippingdata);
         SHIPPING.insertOne(shippingdata, function (err, result) {
             if (err) throw err;
+        });
+
+        SHIPPING.find().toArray(function (err, docs) {
+            if (err) throw err;
+
+            res.render('storeData', {results: docs});
+
         });
 /*
         //ORDERS collection operation
@@ -121,14 +152,14 @@ module.exports.storeData = function (req, res) {
         ORDERS.insertOne(orderdata, function (err, result) {
             if (err) throw err;
         });
-*/
-        Routes.find().toArray(function (err, docs) {
+
+        ORDERS.find().toArray(function (err, docs) {
             if (err) throw err;
 
             res.render('storeData', {results: docs});
 
         });
-
+*/
     })
 
 };
