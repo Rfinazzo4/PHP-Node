@@ -15,9 +15,9 @@ module.exports.storeData = function (req, res) {
     var email = req.body.email;
 
     //READ IN POST BILLING INFO
-    var cardtype = req.body.ctype;
-    var cardnum = req.body.cnum;
-    var carddate = req.body.cdate;
+    var cardtype = req.body.cctype;
+    var cardnum = req.body.ccnum;
+    var carddate = req.body.ccdate;
 
     //READ IN POST SHIPPING INFO
     var shaddy = req.body.shipstreet;
@@ -84,6 +84,7 @@ module.exports.storeData = function (req, res) {
             CREDITCARDNUM: cardnum,
             CREDITCARDEXP: carddate
         };
+
         res.send(billingdata);
         BILLING.insertOne(billingdata, function (err, result) {
             if (err) throw err;
