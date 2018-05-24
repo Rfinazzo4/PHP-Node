@@ -17,12 +17,12 @@ module.exports.storeData = function (req, res) {
     var stat = req.body.state;
     var zip = req.body.zip;
     var email = req.body.email;
-/*
+
     //READ IN POST BILLING INFO
     billing_info['ctype'] = req.body.ctype;
     billing_info['cnum'] = req.body.cnum;
     billing_info['cdate'] = req.body.cdate;
-
+/*
     //READ IN POST SHIPPING INFO
     shipment_info['add1'] = req.body.addy;
     shipment_info['city'] = req.body.city;
@@ -91,7 +91,7 @@ module.exports.storeData = function (req, res) {
         });
 
         //Billing collection operation
-/*
+
         var BILLING = theDatabase.collection('BILLING');
 
         var billingdata = {
@@ -104,7 +104,7 @@ module.exports.storeData = function (req, res) {
         BILLING.insertOne(billingdata, function (err, result) {
             if (err) throw err;
         });
-
+/*
         //Shipping collection operation
         var SHIPPING = theDatabase.collection('SHIPPING');
 
