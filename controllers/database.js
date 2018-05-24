@@ -18,9 +18,9 @@ module.exports.storeData = function (req, res) {
     var cardtype = req.body.cctype;
     var cardnum = req.body.ccnum;
     var carddate = req.body.ccdate;
-    res.send("card type: " + cardtype+"\n");
-    res.send("card num" + cardnum+"\n");
-    res.send("carddate " + ccdate+"\n");
+    res.send("card type: " + cardtype);
+    res.send("card num" + cardnum);
+    res.send("carddate " + ccdate);
 
 
 
@@ -29,18 +29,18 @@ module.exports.storeData = function (req, res) {
     var shcity = req.body.shipcity;
     var shstate = req.body.shipstate;
     var shzip = req.body.shipzip;
-    res.send("ship addy " + shaddy+"\n");
-    res.send("ship city " + shcity+"\n");
-    res.send("ship state " + shstate+"\n");
-    res.send("ship zip " + shzip+"\n");
+    res.send("ship addy " + shaddy);
+    res.send("ship city " + shcity);
+    res.send("ship state " + shstate);
+    res.send("ship zip " + shzip);
 
 
     //READ IN POST ORDERS INFO
     var product_vector=req.body.PRODUCTS;
     var total = req.body.ordertotal;
 
-    res.send("product vector " + product_vector +"\n");
-    res.send("total " + total+"\n");
+    res.send("product vector " + product_vector);
+    res.send("total " + total);
 
 
     mongodb.MongoClient.connect(mongoDBURI, function (err, client) {
