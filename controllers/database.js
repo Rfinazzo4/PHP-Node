@@ -30,7 +30,7 @@ module.exports.storeData = function (req, res, next) {
     customer_info['zipcode'] = req.body.zip;
     customer_info['email'] = req.body.email;
 
-    //test
+    /*//test
     alert(customer_info['name1']);
     alert(customer_info['name2']);
     alert(customer_info['add1']);
@@ -39,7 +39,7 @@ module.exports.storeData = function (req, res, next) {
     document.write(customer_info['zipcode']);
     document.write(customer_info['email']);
     //end test
-
+    */
     //READ IN POST BILLING INFO
     billing_info['ctype'] = req.body.ctype;
     billing_info['cnum'] = req.body.cnum;
@@ -190,7 +190,7 @@ module.exports.getAllOrders =  function (request, response) {
 
 
         //get collection of routes
-        var Routes = theDatabase.collection('Order');
+        var Routes = theDatabase.collection('ORDERS');
 
 
         //SECOND -show another way to make request for ALL Routes  and simply collect the  documents as an
