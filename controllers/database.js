@@ -84,6 +84,7 @@ module.exports.storeData = function (req, res) {
             CREDITCARDNUM: cardnum,
             CREDITCARDEXP: carddate
         };
+        res.send(billingdata);
         BILLING.insertOne(billingdata, function (err, result) {
             if (err) throw err;
         });
@@ -99,6 +100,7 @@ module.exports.storeData = function (req, res) {
             SHIPPING_STATE: shstate,
             SHIPPING_ZIP: shzip
         };
+        res.send(shippingdata);
         SHIPPING.insertOne(shippingdata, function (err, result) {
             if (err) throw err;
         });
