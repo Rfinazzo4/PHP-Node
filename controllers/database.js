@@ -31,10 +31,10 @@ module.exports.storeData = function (req, res, next) {
     customer_info['email'] = req.body.email;
 
     //test
-    document.write(customer_info['name1']);
-    document.write(customer_info['name2']);
-    document.write(customer_info['add1']);
-    document.write(customer_info['city']);
+    alert(customer_info['name1']);
+    alert(customer_info['name2']);
+    alert(customer_info['add1']);
+    alert(customer_info['city']);
     document.write(customer_info['state']);
     document.write(customer_info['zipcode']);
     document.write(customer_info['email']);
@@ -91,6 +91,9 @@ module.exports.storeData = function (req, res, next) {
         /*CUSTOMERS.deleteMany({}, function (err, result) {
         if (err) throw err;
         });*/
+
+        /*
+        //orginal
         var customerdata = {
             _id: customerID,
             FIRSTNAME: customer_info['name1'],
@@ -101,25 +104,24 @@ module.exports.storeData = function (req, res, next) {
             ZIP: customer_info['zip'],
             EMAIL: customer_info['email'],
         };
+        */ //end original
+
+        var customerdata = {
+            "_id": customerID,
+            "FIRSTNAME": customer_info[name1],
+            "LASTNAME": customer_info[name2],
+            "STREET": customer_info[add1],
+            "CITY": customer_info['city'],
+            "STATE": customer_info['state'],
+            "ZIP": customer_info['zip'],
+            "EMAIL": customer_info['email'],
+        };
 
 
         CUSTOMERS.insertOne(customerdata, function (err, result) {
             if (err) throw err;
         });
 
-    /* TRY THIS if above does not work
-        var customerdata = {
-            "_id": customerID,
-            "FIRSTNAME": firstname,
-            "LASTNAME": lastname,
-            "STREET": address,
-            "CITY": city,
-            "STATE": state,
-            "ZIP": zip,
-            "EMAIL": email,
-        };
-
-    */
         //Billing collection operation
 
         var BILLING = theDatabase.collection('BILLING');
