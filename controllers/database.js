@@ -10,7 +10,7 @@ module.exports.storeData = function (req, res) {
 
     //READ IN POST CUSTOMER INFO
 
-    var fristn = req.body.firstname;
+    var firstn = req.body.firstname;
     var lastn = req.body.lastname;
     var address = req.body.addy;
     var city = req.body.city;
@@ -76,7 +76,7 @@ module.exports.storeData = function (req, res) {
 
         var customerdata = {
             _id: customerID,
-            FIRSTNAME: fristn,
+            FIRSTNAME: firstn,
             LASTNAME: lastn,
             STREET: address,
             CITY: city,
