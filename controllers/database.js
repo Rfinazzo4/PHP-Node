@@ -16,19 +16,20 @@ router.use(bodyParser.urlencoded({extended: true})); // for parsing application/
 
 module.exports.storeData = function (req, res, next) {
 
+    /*
     var customer_info =[];
     var billing_info =[];
     var shipment_info =[];
-
+*/
     //READ IN POST CUSTOMER INFO
 
-    customer_info['name1'] = req.body.firstname;
-    customer_info['name2'] = req.body.lastname;
-    customer_info['add1'] = req.body.addy;
-    customer_info['city'] = req.body.city;
-    customer_info['state'] = req.body.state;
-    customer_info['zipcode'] = req.body.zip;
-    customer_info['email'] = req.body.email;
+    var fristn = req.body.firstname;
+    var lastn = req.body.lastname;
+    var address = req.body.addy;
+    var city = req.body.city;
+    var stat = req.body.state;
+    var zip = req.body.zip;
+     var email = req.body.email;
 
     /*//test
     alert(customer_info['name1']);
@@ -108,13 +109,13 @@ module.exports.storeData = function (req, res, next) {
 
         var customerdata = {
             _id: customerID,
-            FIRSTNAME: customer_info['name1'],
-            LASTNAME: customer_info['name2'],
-            STREET: customer_info['add1'],
-            CITY: customer_info['city'],
-            STATE: customer_info['state'],
-            ZIP: customer_info['zip'],
-            EMAIL: customer_info['email']
+            FIRSTNAME: fristn,
+            LASTNAME: lastn,
+            STREET: address,
+            CITY: city,
+            STATE: stat,
+            ZIP: zip,
+            EMAIL: email
         };
 
 
