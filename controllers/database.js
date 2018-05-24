@@ -2,18 +2,8 @@
 var mongodb = require('mongodb');
 var mongoDBURI = process.env.MONGODB_URI || 'mongodb://Rfinazzo4:Rio-fizzo4@ds225840.mlab.com:25840/heroku_hnqdq9m4';
 
-//to process data sent in on request need body-parser module
-//var bodyParser = require('body-parser');
-//var path = require('path'); //to work with separtors on any OS including Windows
-
-//var querystring = require('querystring'); //for use in GET Query string of form URI/path?name=value
-
-//router.use(bodyParser.json()); // for parsing application/json
-//router.use(bodyParser.urlencoded({extended: true})); // for parsing application/x-www-form-urlencode
-
-
 module.exports.storeData = function (req, res) {
-    
+
     var customer_info =[];
     var billing_info =[];
     var shipment_info =[];
@@ -27,7 +17,7 @@ module.exports.storeData = function (req, res) {
     var stat = req.body.state;
     var zip = req.body.zip;
     var email = req.body.email;
-
+/*
     //READ IN POST BILLING INFO
     billing_info['ctype'] = req.body.ctype;
     billing_info['cnum'] = req.body.cnum;
@@ -42,8 +32,8 @@ module.exports.storeData = function (req, res) {
     //READ IN POST ORDERS INFO
     var product_vector=req.body.PRODUCT_VECTOR;
     var total = req.body.ordertotal;
-
-        res.send("What I got was: " + firstname + " " );
+*/
+        res.send("What I got was: " + firstn + " "+lastn);
 
 
     mongodb.MongoClient.connect(mongoDBURI, function (err, client) {
@@ -69,9 +59,6 @@ module.exports.storeData = function (req, res) {
 
         //customer collection operation
         var CUSTOMERS = theDatabase.collection('CUSTOMERS');
-        /*CUSTOMERS.deleteMany({}, function (err, result) {
-        if (err) throw err;
-        });*/
 
         /*
         //orginal
@@ -104,11 +91,9 @@ module.exports.storeData = function (req, res) {
         });
 
         //Billing collection operation
-
+/*
         var BILLING = theDatabase.collection('BILLING');
-        /*BILLING.deleteMany({}, function (err, result) {
-        if (err) throw err;
-        });*/
+
         var billingdata = {
             _id: billingID,
             CUSTOMER_ID: customerID,
@@ -122,9 +107,7 @@ module.exports.storeData = function (req, res) {
 
         //Shipping collection operation
         var SHIPPING = theDatabase.collection('SHIPPING');
-        /*SHIPPING.deleteMany({}, function (err, result) {
-        if (err) throw err;
-        });*/
+
         var shippingdata = {
             _id: shippingID,
             CUSTOMER_ID: customerID,
@@ -139,9 +122,7 @@ module.exports.storeData = function (req, res) {
 
         //ORDERS collection operation
         var ORDERS = theDatabase.collection('ORDERS');
-        /*ORDERS.deleteMany({}, function (err, result) {
-        if (err) throw err;
-        });*/
+
         var orderdata = {
             _id: shippingID,
             CUSTOMER_ID: customerID,
@@ -154,7 +135,7 @@ module.exports.storeData = function (req, res) {
         ORDERS.insertOne(orderdata, function (err, result) {
             if (err) throw err;
         });
-
+*/
         Routes.find().toArray(function (err, docs) {
             if (err) throw err;
 
