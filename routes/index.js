@@ -14,7 +14,7 @@ router.get('/', function(req,res,next){res.render('index', {title:'Express'});})
 //      and sort by the name of the route.  Render information in the views/pages/mongodb.ejs
 
 router.post('/storeData', controllerDatabase.storeData);
-router.get('/storeData', controllerDatabase.getAllOrders);
+router.get('/getAllOrders', controllerDatabase.getAllOrders);
 
 /*router.post('/getAllOrders', function (request, response) {
 
