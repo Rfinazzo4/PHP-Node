@@ -27,18 +27,8 @@ module.exports.storeData = function (req, res) {
     var city = req.body.city;
     var stat = req.body.state;
     var zip = req.body.zip;
-     var email = req.body.email;
+    var email = req.body.email;
 
-    /*//test
-    alert(customer_info['name1']);
-    alert(customer_info['name2']);
-    alert(customer_info['add1']);
-    alert(customer_info['city']);
-    document.write(customer_info['state']);
-    document.write(customer_info['zipcode']);
-    document.write(customer_info['email']);
-    //end test
-    */
     //READ IN POST BILLING INFO
     billing_info['ctype'] = req.body.ctype;
     billing_info['cnum'] = req.body.cnum;
@@ -54,17 +44,9 @@ module.exports.storeData = function (req, res) {
     var product_vector=req.body.PRODUCT_VECTOR;
     var total = req.body.ordertotal;
 
+        res.send("What I got was: " + firstname + " " );
 
-    /*
-    //READ IN POST CUSTOMER INFO
-        var firstname= req.body.firstname;
-        var lastname = req.body.lastname;
-        var address= req.body.addy;
-        var city = req.body.city;
-        var state = req.body.state;
-        var zip= req.body.zip;
-        var email = req.body.email;
-    */
+
     mongodb.MongoClient.connect(mongoDBURI, function (err, client) {
         if (err) throw err;
         /**************************************************************************
@@ -76,7 +58,8 @@ module.exports.storeData = function (req, res) {
          *     autogenerate it for the documents we newly insert into the CUSOTMERS, BILLING, SHIPPING
          *      for ORDERS we allow the system to autogenerate its  _id
          */
-        // Try MongoDB in replace of db *******
+
+
         var theDatabase = client.db('heroku_hnqdq9m4'); //set database
 
 
@@ -176,7 +159,7 @@ module.exports.storeData = function (req, res) {
         Routes.find().toArray(function (err, docs) {
             if (err) throw err;
 
-            response.render('storeData', {results: docs});
+            res.render('storeData', {results: docs});
 
         });
 
