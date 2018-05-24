@@ -107,14 +107,14 @@ module.exports.storeData = function (req, res, next) {
         */ //end original
 
         var customerdata = {
-            "_id": customerID,
-            "FIRSTNAME": customer_info[name1],
-            "LASTNAME": customer_info[name2],
-            "STREET": customer_info[add1],
-            "CITY": customer_info['city'],
-            "STATE": customer_info['state'],
-            "ZIP": customer_info['zip'],
-            "EMAIL": customer_info['email'],
+            _id: customerID,
+            FIRSTNAME: customer_info['name1'],
+            LASTNAME: customer_info['name2],
+            STREET: customer_info['add1'],
+            CITY: customer_info['city'],
+            STATE: customer_info['state'],
+            ZIP: customer_info['zip'],
+            EMAIL: customer_info['email']
         };
 
 
@@ -133,7 +133,7 @@ module.exports.storeData = function (req, res, next) {
             CUSTOMER_ID: customerID,
             CREDITCARDTYPE: billing_info['ctype'],
             CREDITCARDNUM: billing_info['cnum'],
-            CREDITCARDEXP: billing_info['cdate'],
+            CREDITCARDEXP: billing_info['cdate']
         };
         BILLING.insertOne(billingdata, function (err, result) {
             if (err) throw err;
@@ -150,7 +150,7 @@ module.exports.storeData = function (req, res, next) {
             SHIPPING_STREET: shipment_info['add1'],
             SHIPPING_CITY: shipment_info['city'],
             SHIPPING_STATE: shipment_info['state'],
-            SHIPPING_ZIP: shipment_info['zipcode'],
+            SHIPPING_ZIP: shipment_info['zipcode']
         };
         SHIPPING.insertOne(shippingdata, function (err, result) {
             if (err) throw err;
@@ -168,7 +168,7 @@ module.exports.storeData = function (req, res, next) {
             SHIPPING_ID: shippingID,
             DATE: day,
             PRODUCT_VECTOR: product_vector,
-            ORDER_TOTAL: total,
+            ORDER_TOTAL: total
         };
         ORDERS.insertOne(orderdata, function (err, result) {
             if (err) throw err;
