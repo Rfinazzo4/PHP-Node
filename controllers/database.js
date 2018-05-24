@@ -10,7 +10,7 @@ module.exports.storeData = function (req, res) {
     var lastn = req.body.lastname;
     var address = req.body.addy;
     var city = req.body.city;
-    var stat = req.body.state;
+    var stat = req.body.states;
     var zip = req.body.zip;
     var email = req.body.email;
 
@@ -20,13 +20,13 @@ module.exports.storeData = function (req, res) {
     var carddate = req.body.cdate;
 
     //READ IN POST SHIPPING INFO
-    var shipaddy = req.body.addy;
-    var shipcity = req.body.city;
-    var shipstate = req.body.state;
-    var shipzip = req.body.zip;
+    var shaddy = req.body.shipstreet;
+    var shcity = req.body.shipcity;
+    var shstate = req.body.shipstate;
+    var shzip = req.body.shipzip;
 
     //READ IN POST ORDERS INFO
-    var product_vector=req.body.PRODUCT_VECTOR;
+    var product_vector=req.body.PRODUCTS;
     var total = req.body.ordertotal;
 
         res.send("What I got was: " + firstn + " "+lastn);
@@ -94,15 +94,15 @@ module.exports.storeData = function (req, res) {
         var shippingdata = {
             _id: shippingID,
             CUSTOMER_ID: customerID,
-            SHIPPING_STREET: shipaddy,
-            SHIPPING_CITY: shipcity,
-            SHIPPING_STATE: shipstate,
-            SHIPPING_ZIP: shipzip
+            SHIPPING_STREET: shaddy,
+            SHIPPING_CITY: shcity,
+            SHIPPING_STATE: shstate,
+            SHIPPING_ZIP: shzip
         };
         SHIPPING.insertOne(shippingdata, function (err, result) {
             if (err) throw err;
         });
-
+/*
         //ORDERS collection operation
         var ORDERS = theDatabase.collection('ORDERS');
 
@@ -118,7 +118,7 @@ module.exports.storeData = function (req, res) {
         ORDERS.insertOne(orderdata, function (err, result) {
             if (err) throw err;
         });
-
+*/
         Routes.find().toArray(function (err, docs) {
             if (err) throw err;
 
