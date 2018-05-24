@@ -9,10 +9,10 @@
     <h2>Database Results getting Orders </h2>
     <ul>
         <% results.forEach(function(r) { %>
-        <li>Name: <%= r.name %></li>
+        <li>Name: <%= r.CUSTOMER_ID %></li>
         <ul>
             <li>
-                Product ID: <%= r.code %>
+                Product ID: <%= r.PRODUCT_VECTOR %>
             </li>
             <li>
                 Quantity: <%=r.quantity %>
