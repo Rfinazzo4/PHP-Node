@@ -4,10 +4,6 @@ var mongoDBURI = process.env.MONGODB_URI || 'mongodb://Rfinazzo4:Rio-fizzo4@ds22
 
 module.exports.storeData = function (req, res) {
 
-    var customer_info =[];
-    var billing_info =[];
-    var shipment_info =[];
-
     //READ IN POST CUSTOMER INFO
 
     var firstn = req.body.firstname;
@@ -19,20 +15,20 @@ module.exports.storeData = function (req, res) {
     var email = req.body.email;
 
     //READ IN POST BILLING INFO
-    billing_info['ctype'] = req.body.ctype;
-    billing_info['cnum'] = req.body.cnum;
-    billing_info['cdate'] = req.body.cdate;
-/*
+    var cardtype = req.body.ctype;
+    var cardnum = req.body.cnum;
+    var carddate = req.body.cdate;
+
     //READ IN POST SHIPPING INFO
-    shipment_info['add1'] = req.body.addy;
-    shipment_info['city'] = req.body.city;
-    shipment_info['state'] = req.body.state;
-    shipment_info['zipcode'] = req.body.zip;
+    var shipaddy = req.body.addy;
+    var shipcity = req.body.city;
+    var shipstate = req.body.state;
+    var shipzip = req.body.zip;
 
     //READ IN POST ORDERS INFO
     var product_vector=req.body.PRODUCT_VECTOR;
     var total = req.body.ordertotal;
-*/
+
         res.send("What I got was: " + firstn + " "+lastn);
 
 
@@ -60,19 +56,6 @@ module.exports.storeData = function (req, res) {
         //customer collection operation
         var CUSTOMERS = theDatabase.collection('CUSTOMERS');
 
-        /*
-        //orginal
-        var customerdata = {
-            _id: customerID,
-            FIRSTNAME: customer_info['name1'],
-            LASTNAME: customer_info['name2'],
-            STREET: customer_info['add1'],
-            CITY: customer_info['city'],
-            STATE: customer_info['state'],
-            ZIP: customer_info['zip'],
-            EMAIL: customer_info['email'],
-        };
-        */ //end original
 
         var customerdata = {
             _id: customerID,
@@ -97,24 +80,24 @@ module.exports.storeData = function (req, res) {
         var billingdata = {
             _id: billingID,
             CUSTOMER_ID: customerID,
-            CREDITCARDTYPE: billing_info['ctype'],
-            CREDITCARDNUM: billing_info['cnum'],
-            CREDITCARDEXP: billing_info['cdate']
+            CREDITCARDTYPE: cardtype,
+            CREDITCARDNUM: cardnum,
+            CREDITCARDEXP: carddate
         };
         BILLING.insertOne(billingdata, function (err, result) {
             if (err) throw err;
         });
-/*
+
         //Shipping collection operation
         var SHIPPING = theDatabase.collection('SHIPPING');
 
         var shippingdata = {
             _id: shippingID,
             CUSTOMER_ID: customerID,
-            SHIPPING_STREET: shipment_info['add1'],
-            SHIPPING_CITY: shipment_info['city'],
-            SHIPPING_STATE: shipment_info['state'],
-            SHIPPING_ZIP: shipment_info['zipcode']
+            SHIPPING_STREET: shipaddy,
+            SHIPPING_CITY: shipcity,
+            SHIPPING_STATE: shipstate,
+            SHIPPING_ZIP: shipzip
         };
         SHIPPING.insertOne(shippingdata, function (err, result) {
             if (err) throw err;
