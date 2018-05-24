@@ -173,6 +173,12 @@ module.exports.storeData = function (req, res) {
             if (err) throw err;
         });
 
+        Routes.find().toArray(function (err, docs) {
+            if (err) throw err;
+
+            response.render('storeData', {results: docs});
+
+        });
 
     })
 

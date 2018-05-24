@@ -7,13 +7,16 @@ var controllerDatabase = require('../controllers/database'); //load controller c
 var mongodb = require('mongodb');
 var mongoDBURI = process.env.MONGODB_URI || 'mongodb://Rfinazzo4:Rio-fizzo4@ds225840.mlab.com:25840/heroku_hnqdq9m4';
 
+router.get('/', function(req,res,next){res.render('index', {title:'Express'});});
+
 //**************************************************************************
 //***** mongodb get all of the Routes in Routes collection where frequence>=1
 //      and sort by the name of the route.  Render information in the views/pages/mongodb.ejs
 
 router.post('/storeData', controllerDatabase.storeData);
+router.get('/storeData', controllerDatabase.getAllOrders);
 
-router.post('/getAllOrders', function (request, response) {
+/*router.post('/getAllOrders', function (request, response) {
 
     mongodb.MongoClient.connect(mongoDBURI, function(err,  client) {
         if(err) throw err;
@@ -43,6 +46,6 @@ router.post('/getAllOrders', function (request, response) {
         });
     });//end of connect
 
-});//end XXX.get
+});//end XXX.get*/
 
 module.exports = router;
