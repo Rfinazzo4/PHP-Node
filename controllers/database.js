@@ -21,6 +21,7 @@ module.exports.storeData = function (req, res, next) {
     var shipment_info =[];
 
     //READ IN POST CUSTOMER INFO
+
     customer_info['name1'] = req.body.firstname;
     customer_info['name2'] = req.body.lastname;
     customer_info['add1'] = req.body.addy;
@@ -28,6 +29,16 @@ module.exports.storeData = function (req, res, next) {
     customer_info['state'] = req.body.state;
     customer_info['zipcode'] = req.body.zip;
     customer_info['email'] = req.body.email;
+
+    //test
+    document.write(customer_info['name1']);
+    document.write(customer_info['name2']);
+    document.write(customer_info['add1']);
+    document.write(customer_info['city']);
+    document.write(customer_info['state']);
+    document.write(customer_info['zipcode']);
+    document.write(customer_info['email']);
+    //end test
 
     //READ IN POST BILLING INFO
     billing_info['ctype'] = req.body.ctype;
@@ -45,6 +56,16 @@ module.exports.storeData = function (req, res, next) {
     var total = req.body.ordertotal;
 
 
+    /*
+    //READ IN POST CUSTOMER INFO
+        var firstname= req.body.firstname;
+        var lastname = req.body.lastname;
+        var address= req.body.addy;
+        var city = req.body.city;
+        var state = req.body.state;
+        var zip= req.body.zip;
+        var email = req.body.email;
+    */
     mongodb.MongoClient.connect(mongoDBURI, function (err, client) {
         if (err) throw err;
         /**************************************************************************
@@ -77,14 +98,28 @@ module.exports.storeData = function (req, res, next) {
             STREET: customer_info['add1'],
             CITY: customer_info['city'],
             STATE: customer_info['state'],
-            ZIP: customer_info['zipcode'],
+            ZIP: customer_info['zip'],
             EMAIL: customer_info['email'],
         };
+
+
         CUSTOMERS.insertOne(customerdata, function (err, result) {
             if (err) throw err;
         });
 
+    /* TRY THIS if above does not work
+        var customerdata = {
+            "_id": customerID,
+            "FIRSTNAME": firstname,
+            "LASTNAME": lastname,
+            "STREET": address,
+            "CITY": city,
+            "STATE": state,
+            "ZIP": zip,
+            "EMAIL": email,
+        };
 
+    */
         //Billing collection operation
 
         var BILLING = theDatabase.collection('BILLING');
