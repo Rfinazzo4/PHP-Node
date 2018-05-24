@@ -13,12 +13,11 @@ var mongoDBURI = process.env.MONGODB_URI || 'mongodb://Rfinazzo4:Rio-fizzo4@ds22
 
 
 module.exports.storeData = function (req, res) {
-
-    /*
+    
     var customer_info =[];
     var billing_info =[];
     var shipment_info =[];
-*/
+
     //READ IN POST CUSTOMER INFO
 
     var fristn = req.body.firstname;
