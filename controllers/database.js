@@ -64,7 +64,6 @@ module.exports.storeData = function (req, res) {
             ZIP: zip,
             EMAIL: email
         };
-res.write("customer data: "+customerdata+"\n");
 
         CUSTOMERS.insertOne(customerdata, function (err, result) {
             if (err) throw err;
@@ -88,8 +87,6 @@ res.write("customer data: "+customerdata+"\n");
             CREDITCARDEXP: carddate
         };
 
-        res.write("billing data: "+billingdata+"\n");
-
         BILLING.insertOne(billingdata, function (err, result) {
             if (err) throw err;
         });
@@ -112,7 +109,7 @@ res.write("customer data: "+customerdata+"\n");
             SHIPPING_STATE: shstate,
             SHIPPING_ZIP: shzip
         };
-        res.write("shipping data: "+shippingdata+"\n");
+
 
         SHIPPING.insertOne(shippingdata, function (err, result) {
             if (err) throw err;
@@ -138,8 +135,6 @@ res.write("customer data: "+customerdata+"\n");
             ORDER_TOTAL: total
         };
 
-        res.write("order data: "+orderdata+"\n");
-        res.end();
         ORDERS.insertOne(orderdata, function (err, result) {
             if (err) throw err;
         });
