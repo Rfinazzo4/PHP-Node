@@ -28,17 +28,7 @@ module.exports.storeData = function (req, res) {
     //READ IN POST ORDERS INFO
     var product_vector=req.body.PRODUCTS;
     var total = req.body.ordertotal;
-    res.write("cardtype " + cardtype +"\n");
-    res.write("carddnum " + cardnum+"\n");
-    res.write("carddate " + carddate+"\n");
-    res.write("ship addy " + shaddy+"\n");
-    res.write("ship city " + shcity+"\n");
-    res.write("ship state " + shstate+"\n");
-    res.write("ship zip " + shzip+"\n");
-    res.write("product vector " + product_vector+"\n");
-    res.write("total " + total+"\n");
 
-    res.end();
     mongodb.MongoClient.connect(mongoDBURI, function (err, client) {
         if (err) throw err;
         /**************************************************************************
@@ -74,7 +64,7 @@ module.exports.storeData = function (req, res) {
             ZIP: zip,
             EMAIL: email
         };
-
+res.write("customer data: "+customerdata+"\n");
 
         CUSTOMERS.insertOne(customerdata, function (err, result) {
             if (err) throw err;
@@ -98,7 +88,8 @@ module.exports.storeData = function (req, res) {
             CREDITCARDEXP: carddate
         };
 
-        res.send(billingdata);
+        res.write("billing data: "+billingdata+"\n");
+
         BILLING.insertOne(billingdata, function (err, result) {
             if (err) throw err;
         });
@@ -121,7 +112,8 @@ module.exports.storeData = function (req, res) {
             SHIPPING_STATE: shstate,
             SHIPPING_ZIP: shzip
         };
-        res.send(shippingdata);
+        res.write("shipping data: "+shippingdata+"\n");
+
         SHIPPING.insertOne(shippingdata, function (err, result) {
             if (err) throw err;
         });
@@ -145,6 +137,9 @@ module.exports.storeData = function (req, res) {
             PRODUCT_VECTOR: product_vector,
             ORDER_TOTAL: total
         };
+
+        res.write("order data: "+orderdata+"\n");
+        res.end();
         ORDERS.insertOne(orderdata, function (err, result) {
             if (err) throw err;
         });
