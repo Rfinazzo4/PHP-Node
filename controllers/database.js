@@ -18,8 +18,6 @@ module.exports.storeData = function (req, res) {
     var cardtype = req.body.cctype;
     var cardnum = req.body.ccnum;
     var carddate = req.body.ccdate;
-    res.write("card type: " + cardtype);
-    res.write("card num" + cardnum);
     res.write("carddate " + ccdate);
 
 
