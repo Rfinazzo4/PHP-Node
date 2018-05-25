@@ -28,15 +28,15 @@ module.exports.storeData = function (req, res) {
     //READ IN POST ORDERS INFO
     var product_vector=req.body.PRODUCTS;
     var total = req.body.ordertotal;
-    res.write("cardtype " + cardtype);
-    res.write("carddnum " + carddnum);
-    res.write("carddate " + carddate);
-    res.write("ship addy " + shaddy);
-    res.write("ship city " + shcity);
-    res.write("ship state " + shstate);
-    res.write("ship zip " + shzip);
-    res.write("product vector " + product_vector);
-    res.write("total " + total);
+    res.write("cardtype " + cardtype +"\n");
+    res.write("carddnum " + cardnum+"\n");
+    res.write("carddate " + carddate+"\n");
+    res.write("ship addy " + shaddy+"\n");
+    res.write("ship city " + shcity+"\n");
+    res.write("ship state " + shstate+"\n");
+    res.write("ship zip " + shzip+"\n");
+    res.write("product vector " + product_vector+"\n");
+    res.write("total " + total+"\n");
 
     res.end();
     mongodb.MongoClient.connect(mongoDBURI, function (err, client) {
