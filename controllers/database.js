@@ -132,7 +132,7 @@ module.exports.storeData = function (req, res) {
             res.render('storeData', {results: docs});
 
         });
-/*
+
         //ORDERS collection operation
         var ORDERS = theDatabase.collection('ORDERS');
 
@@ -155,7 +155,7 @@ module.exports.storeData = function (req, res) {
             res.render('storeData', {results: docs});
 
         });
-*/
+
     })
 
 };
