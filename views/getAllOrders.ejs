@@ -9,15 +9,15 @@
     <h2>Database Results getting Orders </h2>
     <ul>
         <% results.forEach(function(r) { %>
-        <li>Name: <%= r.PRODUCT_VECTOR %></li>
-        <ul>
-            <li>
+        <li>Customer ID: <%= r.CUSTOMER_ID %></li>
+            <li>Billing ID: <%= r.BILLING_ID %>
             </li>
-            <li>
+            <li>Shipping ID: <%= r.BILLING_ID %>
             </li>
-            <li>
+            <li>Date: <%= r.DATE %>
             </li>
-        </ul>
+            <li>Order Total: <%= r.ORDER_TOTAL %>
+            </li>
         <br/><br/>
         <% }); %>
     </ul>
