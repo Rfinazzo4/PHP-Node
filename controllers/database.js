@@ -18,27 +18,23 @@ module.exports.storeData = function (req, res) {
     var cardtype = req.body.cctype;
     var cardnum = req.body.ccnum;
     var carddate = req.body.ccdate;
-    res.write("cardtype " + cardtype);
-    res.write("carddnum " + carddnum);
-    res.write("carddate " + carddate);
-
-
 
     //READ IN POST SHIPPING INFO
     var shaddy = req.body.shipstreet;
     var shcity = req.body.shipcity;
     var shstate = req.body.shipstate;
     var shzip = req.body.shipzip;
-    res.write("ship addy " + shaddy);
-    res.write("ship city " + shcity);
-    res.write("ship state " + shstate);
-    res.write("ship zip " + shzip);
-
 
     //READ IN POST ORDERS INFO
     var product_vector=req.body.PRODUCTS;
     var total = req.body.ordertotal;
-
+    res.write("cardtype " + cardtype);
+    res.write("carddnum " + carddnum);
+    res.write("carddate " + carddate);
+    res.write("ship addy " + shaddy);
+    res.write("ship city " + shcity);
+    res.write("ship state " + shstate);
+    res.write("ship zip " + shzip);
     res.write("product vector " + product_vector);
     res.write("total " + total);
 
