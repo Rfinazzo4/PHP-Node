@@ -145,7 +145,10 @@ module.exports.storeData = function (req, res) {
             res.render('storeData', {results: docs});
 
         });
-
+        //close connection when your app is terminating.
+        client.close(function (err) {
+            if (err) throw err;
+        });
     })
 
 };
