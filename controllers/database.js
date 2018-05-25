@@ -131,7 +131,7 @@ module.exports.storeData = function (req, res) {
             BILLING_ID: billingID,
             SHIPPING_ID: shippingID,
             DATE: day,
-            PRODUCT_VECTOR: product_vector,
+            //PRODUCT_VECTOR: product_vector,
             ORDER_TOTAL: total
         };
 
