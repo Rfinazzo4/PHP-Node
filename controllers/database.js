@@ -26,7 +26,7 @@ module.exports.storeData = function (req, res) {
     var shzip = req.body.shipzip;
 
     //READ IN POST ORDERS INFO
-    var product_vector=req.body.PRODUCTS;
+    var product_vector = req.body.PRODUCTS;
     var total = req.body.ordertotal;
 
     mongodb.MongoClient.connect(mongoDBURI, function (err, client) {
@@ -131,7 +131,7 @@ module.exports.storeData = function (req, res) {
             BILLING_ID: billingID,
             SHIPPING_ID: shippingID,
             DATE: day,
-            PRODUCT_VECTOR: product_vector,
+            //PRODUCT_VECTOR: product_vector,
             ORDER_TOTAL: total
         };
 
